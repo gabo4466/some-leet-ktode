@@ -1,14 +1,9 @@
 package com.gaboscm
 
-import MaximumDifference
+import com.gaboscm.problems.MinimumStepByStepSum
 
 fun main() {
-    val maximumDifference = MaximumDifference()
-    println(maximumDifference.minMaxDifference(1234))
-    println(maximumDifference.minMaxDifference(0))
-    println(maximumDifference.minMaxDifference(11891))
-    println(maximumDifference.minMaxDifference(90))
-    println(maximumDifference.minMaxDifference(9))
-    println(maximumDifference.minMaxDifference(1))
+    val minimunValueStepByStepSum = MinimumStepByStepSum()
+    println(minimunValueStepByStepSum.minStartValue(intArrayOf(-4,-1,1,-5,-4,5,5)))
 }
 

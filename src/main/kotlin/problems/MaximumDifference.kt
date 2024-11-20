@@ -1,17 +1,20 @@
+package com.gaboscm.problems
+
 class MaximumDifference {
     private fun Int.toDigits(): List<Int> = toString().map { it.toString().toInt() }
     data class NumberReplace(val numberToReplace: Int, val newNumber: Int) {}
     fun minMaxDifference(num: Int): Int {
-        val numbers = num.toDigits()
-        if (numbers.isEmpty()) return 0
-        return getNumberWithReplacement(findNumberToReplaceForMax(numbers), numbers) - getNumberWithReplacement(findNumberReplaceForMin(numbers), numbers)
+        if (num.toDigits().isEmpty()) return 0
+        return getNumberWithReplacement(findNumberToReplaceForMax(num.toDigits()), num.toDigits()) - getNumberWithReplacement(
+            findNumberToReplaceForMin(num.toDigits()), num.toDigits()
+        )
     }
 
     private fun findNumberToReplaceForMax(numbers: List<Int>): NumberReplace {
         return findNumberReplace(numbers, 9)
     }
 
-    private fun findNumberReplaceForMin(numbers: List<Int>): NumberReplace {
+    private fun findNumberToReplaceForMin(numbers: List<Int>): NumberReplace {
         return findNumberReplace(numbers, 0)
     }
 
@@ -28,10 +31,10 @@ class MaximumDifference {
                 break
             }
         }
-        if (replaceValue == null)
-            return NumberReplace(valueToReplace, valueToReplace)
+        return if (replaceValue == null)
+            NumberReplace(valueToReplace, valueToReplace)
         else
-            return NumberReplace(numbers[index], replaceValue)
+            NumberReplace(numbers[index], replaceValue)
     }
 
     private fun getNumberWithReplacement(numberReplace: NumberReplace, numbers: List<Int>): Int {
